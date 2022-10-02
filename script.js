@@ -24,11 +24,14 @@ function generatePassword(){
   var possiblePassChars= [passLength, upperCaseLetters, lowerCaseLetters, numericValues, specialChar];
  
   function verifyLength(){
-    if (passwordLength <= 8)
+    if (passwordLength <= 7){
     prompt("choose a number between 8 and 132");
-    if (passwordLength >=132)
+  }
+
+    if (passwordLength >=133){
     prompt("choose a number between 8 and 132");
-    else {};
+  }
+    else {passwordLength:passwordLength};
 
   }
   function selectRandChars(array){
