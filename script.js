@@ -14,7 +14,7 @@ function generatePasswordOptions(){
     return passwordLength;
   }
 // MAke a conditional that handles user input if they respond with something other than a number
-if (passwordLength != Number){
+if (passwordLength === String){
 alert("Must be a number")
 return null;
 }
@@ -35,7 +35,7 @@ if (passwordLength < 8) {
   var includeSpecialChar = confirm("Would you like to include special characters?");
   
 //MAke a conditional statement that handles when users hit cancel on all confirms
-if (includeUpper, includeLower,  includeSpecialChar, includeNumber === false){
+if (includeUpper, includeLower,  includeSpecialChar, includeNumber = false){
 alert('Password must include at least 2 types of characters');
   return null;
   
@@ -64,7 +64,7 @@ var options= generatePasswordOptions()
 
   var password = [];
 
-  var remainingChars = options.length - passwordLength;
+  var remainingChars = options.length - options[0];
   for(var i = 0; i < remainingChars; i++){
     selectRandChars(possiblePassChars);
 
