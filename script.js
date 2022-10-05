@@ -5,14 +5,32 @@ var numericValues = ["1", "2","3","4", "5", "6", "7", "8", "9", "0"];
 
 
 
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
+
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  var finalPass = [password.join('')];
+  passwordText.value = finalPass;
+return finalPass
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword());
+writePassword()
+
+
 function generatePasswordOptions(){
   
   var passwordLength = parseInt(
     prompt('How long should your password be? Between 8 and 132')
   );
-  if (passwordLength>=8 && passwordLength<= 132){
-    return passwordLength;
-  }
+  // if (passwordLength>=8 && passwordLength<= 132){
+  //   return passwordLength;
+  // }
 // MAke a conditional that handles user input if they respond with something other than a number
 if (passwordLength === String){
 alert("Must be a number")
@@ -35,11 +53,12 @@ if (passwordLength < 8) {
   var includeSpecialChar = confirm("Would you like to include special characters?");
   
 //MAke a conditional statement that handles when users hit cancel on all confirms
-if (includeUpper, includeLower,  includeSpecialChar, includeNumber = false){
-alert('Password must include at least 2 types of characters');
-  return null;
+// if (includeUpper, includeLower,  includeSpecialChar, includeNumber = false){
+// alert('Password must include at least 2 types of characters');
+//   return null;
   
-}
+// }
+
 
   var confirmedOptions = {
   passwordLength: passwordLength, 
@@ -48,75 +67,54 @@ alert('Password must include at least 2 types of characters');
   includeSpecialChar: includeSpecialChar,
   includeNumber: includeNumber,
   }
-  return confirmedOptions
+   return confirmedOptions
   
 };
 
 function generatePassword(){
 
-var options= generatePasswordOptions()
-  var possiblePassChars= [options];
+  var options= generatePasswordOptions()
+  console.log(options)
+  var possiblePassChars= [];
 
   function selectRandChars(array){
-    var randomNumber = Math.floor(math.random() * array.length);
+    var randomNumber = Math.floor(Math.random() * array.length);
    return array[randomNumber];
   }
 
   var password = [];
 
-  var remainingChars = options.length - options[0];
-  for(var i = 0; i < remainingChars; i++){
-    selectRandChars(possiblePassChars);
-
-    var randChar= selectRandChars(possiblePassChars);
-    password.push(randChar);
-
 
     if(options.includeUpper){
-     possiblePassChars = possiblePassChars.concat(includeUpper);
-     password.push(selectRandChars(includeUpper));
+     possiblePassChars = possiblePassChars.concat(upperCaseLetters);
+     password.push(selectRandChars(upperCaseLetters));
     }
         
     if(options.includeLower){
-      possiblePassChars = possiblePassChars.concat(includeLower);
-      password.push(selectRandChars(includeLower));
+      possiblePassChars = possiblePassChars.concat(lowerCaseLetters);
+      password.push(selectRandChars(lowerCaseLetters));
       }
     
    if(options.includeSpecialChar){
-      possiblePassChars = possiblePassChars.concat(includeSpecialChar);
-      password.push(selectRandChars(includeSpecialChar));
+      possiblePassChars = possiblePassChars.concat(specialChar);
+      password.push(selectRandChars(specialChar));
       }
    
     if(options.includeNumber){
-     possiblePassChars = possiblePassChars.concat(includeNumber);
-     password.push(selectRandChars(includeNumber));
+     possiblePassChars = possiblePassChars.concat(numericValues);
+     password.push(selectRandChars(numericValues));
     }
-   
-  }
+   console.log(possiblePassChars)
+  
+  
+  var remainingChars = options.passwordLength - password.length;
+  for(var i = 0; i < remainingChars; i++){
+    var randChar= selectRandChars(possiblePassChars);
+     password.push(randChar); 
+   }
+
  return password
 };
-
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
-
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-return password
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword());
-
-writePassword()
-
-
-
-
 
 
 
